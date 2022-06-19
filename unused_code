@@ -1,0 +1,76 @@
+def get_dist(a_matrix, b_matrix):
+    diff_matrix = (a_matrix + b_matrix).applyfunc(lambda x: mod(x,2))
+    dist = (diff_matrix * sympy.Matrix([1] * diff_matrix.shape[1]))[0]
+    return dist
+
+def checkCode(x,H):
+    x=myReadFromFile(x)
+    H=myReadFromFile(H)        
+    sympy.pprint((x*H.T).applyfunc(lambda x: mod(x,2)))
+    
+def prangeVec(t,p,l,k,n):
+    errorv=sympy.zeros(1,n)
+    positions=[]
+    i=0
+    ii=0
+    iii=0
+    iv=0    
+    while ii<p:
+        pos = random.randrange(int(k/2))
+        if pos not in positions:
+            positions.append(pos)
+            errorv[0,pos]=1
+            ii+=1        
+    while iii<p:
+        pos = random.randrange(int(k/2),k)
+        if pos not in positions:
+            positions.append(pos)
+            errorv[0,pos]=1
+            iii+=1
+                #Πρέπει να κατανείμω τα λάθη αναλογα όπως ψάχνει ο στερν ήηη να το πάω τελειως τυχαία;;;
+    while iv<t-2*p:       
+        pos = random.randrange(k+l,n)
+        if pos not in positions:
+            positions.append(pos)
+            errorv[0,pos]=1
+            iv+=1    
+    return errorv
+    
+    
+    
+    
+    '''
+def getPVec(list,p):#returns a list with vectors with p nonzeros each
+    list2=[]
+    for i in list:
+         if np.count_nonzero(i)==p:
+            mat=sympy.Matrix(i)
+            matMut=mat.as_mutable()
+            matMutT=matMut.T
+            list2.append(matMutT)
+    return list2
+
+
+
+def getB_BallColl(k,p):
+    #Seperate randomly the k to k1,k2
+    k1=int(2*k/3)
+    k2=k-k1
+    #p1=int(k1*p/k)
+    #p2=p-p1
+    p1=1
+    p2=p-1
+
+    #print ('vec1,vec2-err1,err2,',k1,k2,p1,p2)
+    k1_list=list(itertools.product([int(0), int(1)], repeat=k1))
+    k2_list=list(itertools.product([int(0), int(1)], repeat=k2))
+    return getPVec(k1_list,p1),getPVec(k2_list,p2)
+'''
+def addmod2(ar1,ar2):
+    #temp=(ar1+ar2).applyfunc(lambda x: mod(x,2))
+    return (ar1+ar2).applyfunc(lambda x: mod(x,2))
+def multmod2(ar1,ar2):
+    return (ar1*ar2).applyfunc(lambda x: mod(x,2))
+
+def concat(i,j):
+    return int(str(i) + str(j))
