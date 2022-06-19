@@ -9,38 +9,22 @@ import datetime
 from ISD_Utilities import *
 #from McElieceUtil import *
 
-def ballcoll(c,H,t,p,q,l):
+def ballcoll(c,H,t,p1,p2,q1,q2,l):
     
-    #ball coll
-    #Constants: n, k, w ∈ Z with 0 ≤ w ≤ n and 0 ≤ k ≤ n.
-    #Parametek2s: p1 , p2 , q1 , q2 , k1 , k2 , `1 , `2 ∈ Z with 0 ≤ k1 , 0 ≤ k2 , k = k1 + k2 , 0 ≤ p1 ≤ k1 ,
-    #0 ≤ p2 ≤ k2 , 0 ≤ q1 ≤ l1 , 0 ≤ q2 ≤ `2 , and 0 ≤ w − p1 − p2 − q1 − q2 ≤ n − k − `1 − `2 . 
-    '''
-    l1=random.randint(0,l)
-    l2=l-l1
-    isl=1
-    #check if q1+q2+p+p is largek2 than t 
-    while isl:
-        q1=random.randint(0,l1)
-        q2=random.randint(0,l2) 
-        if q1+q2+p+p<=t:
-            isl=0
-    '''
-    #!ball coll   
     rawH=myReadFromFile(H) 
     n=rawH.shape[1]
     k= rawH.shape[1]  - rawH.shape[0]
     print('n,k=',n,k)
     #p=p1+p2,q=q1+q2
-    if 2*p+q >t or q>l or 2*p>k  :
-        print('wrong p,q distribution or number (p+q >t , q>l , p>k , p<2), exiting..')
+    if p1+p2+q1+q2 >t or q1+q2>l or p1+p2>k  :
+        print('wrong p,q distribution, exiting...')
         exit()
     cword=myReadFromFile(c)  
      
     syndr=(cword*rawH.T).applyfunc(lambda x: mod(x,2))
     attempts=0
     attemptsQ=0
-    time.sleep(1)
+    #time.sleep(1)
     #Algorithm inits, 1st loop
     alg=1       
     while alg:
@@ -62,35 +46,15 @@ def ballcoll(c,H,t,p,q,l):
             #print('Finding Q(#', attemptsQ,')...' )
             try:
                 Q=HP[:,k:n].inv_mod(2)
-                #print('q is...')                
             except ValueError:
                 print('Unable to apply G.E, restarting...')
-                #time.sleep(1)
                 continue
-            #time.sleep(1)
-            #print('left is..')
-            leftPrH= (Q*HP[:,0:k]).applyfunc(lambda x: mod(x,2))
-            #k1,k2 are equivalent to k1,k2. The q1,q2 are to be the quantitives that distributes the q.
-            #!!!!!!Note: k1,k2,l1,l2 should be non zero....
-            '''
-            k1,k2=getB_BallColl(k,p)
-            l1,l2=getB_BallColl(l,q)
-            '''
-            #print('k1,k2 ...is...')
-            k1,k2=getB(k,p)
-            #print('len of k1[0] is ' ,len(k1[0]))
             
-            #If input q==-1 then the l coordinates will be a zero vector
-            if q==-1:
-                l1,l2=getB(l,0)
-            else:
-                l1,l2=getB(l,q)
-                
-                
-            lenk1=len(k1[0])
-            #sympy.pprint(k2)
-            A=leftPrH[0:l,0:lenk1]  
-            #print(len(k1)) 
+            leftPrH= (Q*HP[:,0:k]).applyfunc(lambda x: mod(x,2)) 
+            L1,L2=getBCD3(k,p1,p2) 
+            lenk1=len(L1[0])
+                        
+            A=leftPrH[0:l,0:lenk1]               
             #εδώ ειναι το προβλημα             
             B=leftPrH[0:l,lenk1:k]
             C=leftPrH[l:n-k,0:lenk1]
@@ -98,19 +62,34 @@ def ballcoll(c,H,t,p,q,l):
 
             primeSyndr=(syndr*Q.T).applyfunc(lambda x: mod(x,2))
             pSyndrl=primeSyndr[:,0:l]
-            pSyndrR=primeSyndr[:,l:n-k] 
+            pSyndrR=primeSyndr[:,l:n-k]
             
-            #find the possible l size vectors with q1+q2 errors. In other words this is the ẽM.
             eMlist=[]
+            l1=[]
+            l2=[]
+            '''
+            if q1==0 and q2==0:
+                #l1,l2=getB(l,0)
+                eM=sympy.zeros(1,l)
+                eMlist.append(eM)
+            else:
+                l1,l2=getBCD3(l,q1,q2)             
+                for el1 in  l1:
+                    for el2 in l2: 
+                        eM=el1.row_join(el2)
+                        eMlist.append(eM)
+            
+            '''
+            l1,l2=getBCD3(l,q1,q2)
             for el1 in  l1:
                 for el2 in l2: 
                     eM=el1.row_join(el2)
                     eMlist.append(eM)
             
             #2nd loop
-            for ek1 in k1:
+            for ek1 in L1:
                 ek1AT=(ek1*A.T).applyfunc(lambda x: mod(x,2))
-                for ek2 in k2:
+                for ek2 in L2:
                     #print('Into the main loop..')
                     #Insert the early abort
                     #if np.count_nonzero(ek1)+np.count_nonzero(ek2)>t-q:
@@ -163,12 +142,23 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-c", type=int,	help="Times to repeat the alg")
 parser.add_argument("-l", type=int,	help="size of dimension l(stern)")
 parser.add_argument("-p1", type=int,	help="num of errors in k1")
+parser.add_argument("-p2", type=int,	help="num of errors in k2")
 parser.add_argument("-q1", type=int,	help="num of errors in l1")
+parser.add_argument("-q2", type=int,	help="num of errors in l2")
 parser.add_argument("-t", type=str, help="num of errors")
 parser.add_argument("-m", type=str, help="m in GF")
 args = parser.parse_args()
 
-if args.m and args.t and args.l and args.c and args.p1 and args.q1 :
+if args.m and args.t and args.l and args.c and args.p1 and args.p2 and args.q1 and args.q2:
+    if args.q1<0:
+        q1=0
+    else:
+        q1=args.q1
+    if args.q2<0:
+        q2=0
+    else:
+        q2=args.q2
+    
     path='stats/'
     logs='ballColl.csv' 
     logPath=os.path.join(path,logs)   
@@ -183,20 +173,11 @@ if args.m and args.t and args.l and args.c and args.p1 and args.q1 :
     try:       
         for instant in range(args.c):
             stamp1=time.time()
-            #ballcoll(c,H,t,p,q,l):
-            if args.q1>0:
-                n,k,k1,l1,attempt=ballcoll(cd,h,int(args.t),args.p1 ,args.q1,args.l) 
-            else:
-                n,k,k1,l1,attempt=ballcoll(cd,h,int(args.t),args.p1,0,args.l)  
-            #nomPr=round(math.comb(n-int(args.t),k)/math.comb(n,k),4)  
-            #print(nomPr)  
+            n,k,k1,l1,attempt=ballcoll(cd,h,int(args.t),args.p1,args.p2,q1,q2,args.l) 
             stamp2=time.time()        
             with open(logPath , 'a') as f:            
                 f.write('\n')
-                if args.q1<0:
-                    f.write('Ball coll OK,'+args.m+','+args.t+','+str(n)+','+str(k)+','+str(args.l)+','+str(k1)+','+str(l1)+','+str(args.p1)+','+str(0)+','+str(int(stamp2-stamp1))+','+str(round(1/attempt,4)))  
-                else:
-                    f.write('Ball coll OK,'+args.m+','+args.t+','+str(n)+','+str(k)+','+str(args.l)+','+str(k1)+','+str(l1)+','+str(args.p1)+','+str(args.q1)+','+str(int(stamp2-stamp1))+','+str(round(1/attempt,4)))          
+                f.write('Ball coll OK,'+args.m+','+args.t+','+str(n)+','+str(k)+','+str(k1)+','+str(args.p1)+','+str(args.p2)+','+str(q1)+','+str(q2)+','+str(l1)+','+str(int(stamp2-stamp1))+','+str(round(1/attempt,4)))          
                 f.close()                
     except Exception as ex:  
         template = "An exception of type {0} occurred. Arguments:\n{1!r}"

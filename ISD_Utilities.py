@@ -189,9 +189,9 @@ def getB_bc(k,p):
     
 #--------------BCD version 2---------   
 def getBCD(k,p):
-	p1=int(2*p/3)
-	p2=p-p1
-	#if k is odd seperates the k
+    p1=int(2*p/3)
+    p2=p-p1
+    #if k is odd seperates the k
     if k%2!=0:
         floor=int((k-1)/2)
         ceil=floor+1
@@ -200,9 +200,23 @@ def getBCD(k,p):
         return getPossibleVectors(floor,p1), getPossibleVectors(ceil,p2)
     #k is not odd
     else:
-    	return getPossibleVectors(int(k/2),p1), getPossibleVectors(int(k/2),p2)
+        return p1,p2,getPossibleVectors(int(k/2),p1), getPossibleVectors(int(k/2),p2)
     
-	
+#--------------BCD, without p output--
+def getBCD3(k,p1,p2):
+    
+    #if k is odd seperates the k
+    if k%2!=0:
+        floor=int((k-1)/2)
+        ceil=floor+1
+        #floorList=list(itertools.product([int(0), int(1)], repeat=floor))
+        #ceilList=list(itertools.product([int(0), int(1)], repeat=ceil))
+        return getPossibleVectors(floor,p1),getPossibleVectors(ceil,p2)
+    #k is not odd
+    else:
+        return getPossibleVectors(int(k/2),p1),getPossibleVectors(int(k/2),p2)
+
+
 #------------- Stern ---------------
 def getB(k,p):
     #if k is odd seperates the k

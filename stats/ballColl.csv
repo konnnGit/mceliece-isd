@@ -1,0 +1,54 @@
+
+2022-06-19 11:07:58.935287
+An exception of type NameError occurred. Arguments:
+("name 'k1' is not defined",)
+2022-06-19 11:29:16.414590
+
+An exception of type AttributeError occurred. Arguments:
+("'Namespace' object has no attribute 'p1'",)
+2022-06-19 15:37:01.261501
+2022-06-19 15:38:23.225077
+An exception of type NameError occurred. Arguments:
+("name 'getBCD3' is not defined",)
+2022-06-19 15:41:05.720549
+An exception of type NameError occurred. Arguments:
+("name 'getBCD3' is not defined",)
+2022-06-19 15:42:22.637645
+2022-06-19 15:46:41.656602
+2022-06-19 15:58:55.945812
+An exception of type ValueError occurred. Arguments:
+('factorial() not defined for negative values',)
+2022-06-19 16:00:08.914575
+An exception of type NameError occurred. Arguments:
+("name 'q1' is not defined",)
+2022-06-19 16:01:08.263227
+
+An exception of type AttributeError occurred. Arguments:
+("'Namespace' object has no attribute 'k1'",)
+2022-06-19 16:02:57.394014
+Ball coll OK,5,4,32,12,6,1,1,-1,-1,1,26,0.0588
+2022-06-19 16:30:46.003260
+An exception of type UnboundLocalError occurred. Arguments:
+("local variable 'l1' referenced before assignment",)
+2022-06-19 16:44:02.940058
+An exception of type UnboundLocalError occurred. Arguments:
+("local variable 'l1' referenced before assignment",)
+2022-06-19 16:56:13.368777
+An exception of type IndexError occurred. Arguments:
+('list index out of range',)
+2022-06-19 17:09:16.319729
+Ball coll OK,5,4,32,12,6,1,1,0,0,1,56,0.0286
+Ball coll OK,5,4,32,12,6,1,1,0,0,1,58,0.0244
+Ball coll OK,5,4,32,12,6,1,1,0,0,1,8,1.0
+2022-06-19 17:12:39.833469
+An exception of type NameError occurred. Arguments:
+("name 'q2' is not defined",)
+2022-06-19 17:12:57.934281
+An exception of type NameError occurred. Arguments:
+("name 'q1' is not defined",)
+2022-06-19 17:17:04.241404
+2022-06-19 17:17:10.934786
+Ball coll OK,5,4,32,12,6,1,1,1,0,1,638,0.0037
+Ball coll OK,5,4,32,12,6,1,1,1,0,1,714,0.0037
+Ball coll OK,5,4,32,12,6,1,1,1,0,1,470,0.0052
+2022-06-19 18:06:51.396309
