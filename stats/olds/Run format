@@ -1,6 +1,0 @@
-nohup ./ballColl.py -c 35 -m 7 -t 4 -p1  1   -l 2  -q1  -1 &
-
-nohup ./stern.py -c 35 -m 7 -t 4 -p 2   -l 2 &
-
-nohup ./prange.py -c 35 -m 5 -t 5 &
-
