@@ -160,7 +160,7 @@ if args.m and args.t and args.l and args.c and args.p1 and args.p2 and args.q1 a
         q2=args.q2
     
     path='stats/'
-    logs='ballColl.csv' 
+    logs='ball-coll.csv' 
     logPath=os.path.join(path,logs)   
     mt=args.m+args.t
     cd=mt+'.codeword'
