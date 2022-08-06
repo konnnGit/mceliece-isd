@@ -5,13 +5,13 @@ The steps one may follow to deploy the overall application are:
 1. Construct a McEliece cryptosystem based on the Galois Field parameters m
 and t. For this paradigm m = 7 and t = 9.
 
-McEliece.py -g -m 7 -t 9 -o 79 -v
+		McEliece.py -g -m 7 -t 9 -o 79 -v
 
-Note: The flag -o is used to define the name of the necessary binary files
-which contain the keys, etc. The m, t parameters are part of the file names.
-See manual pages A.6 for more information.
-Note: There is a restriction while creating keys. It is recommended not to use
-big values for m and t because it stalls the create process.
+	Note: The flag -o is used to define the name of the necessary binary files
+	which contain the keys, etc. The m, t parameters are part of the file names.
+	See manual pages A.6 for more information.
+	Note: There is a restriction while creating keys. It is recommended not to use
+	big values for m and t because it stalls the create process.
 
 2. Encode a plain text message into a binary message using the public version of
 the Parity Check Matrix H (Hpub = HP).
