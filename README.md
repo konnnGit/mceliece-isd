@@ -21,7 +21,7 @@ the Parity Check Matrix H (Hpub = HP).
 
 3. Encrypt the binary message into a codeword using the McEliece public key.
 
-	McEliece.py -e 79.binMsg -pub 79.pub -o 79.codeword
+		./McEliece.py -e 79.binMsg -pub 79.pub -o 79.codeword
 
 	Note: One may use the included bash script
 
@@ -33,6 +33,7 @@ the Parity Check Matrix H (Hpub = HP).
 4. Attack to the cipher, having three (3) options:
 
 	a) Prange’s algorithm
+	
 		./prange.py -c 5 -m 7 -t 9
 		
 	Note: In order to run the algorithms in background one may use the nohup command, like
