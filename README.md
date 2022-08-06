@@ -53,7 +53,17 @@ must declared with a negative value.
 
 
 5. Decrypt the cipher.
-bla
+
+Decrypt the cipher. In case of decrypting, the flag -d must be selected. We
+coose the correspoding codeword, the private key and define the output palin
+text name.
+
+McEliece.py -d 76.codeword -pub 76.priv -o 76.plain
+
 6. Decode the decrypted binary cipher text into the initial plain text.
-bla
+
+MatrixCodec.py -d 76.plain
+
+
+
 Restrictions:
