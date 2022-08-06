@@ -1,4 +1,5 @@
-The source code of this attempt is in https://github.com/konnnGit/mceliece-isd.
+The source code of this attempt is in https://github.com/konnnGit/mceliece-isd/tree/final.
+
 The steps one may follow to deploy the overall application are:
 
 1. Construct a McEliece cryptosystem based on the Galois Field parameters m
