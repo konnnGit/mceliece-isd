@@ -40,14 +40,14 @@ the Parity Check Matrix H (Hpub = HP).
 
 		./nohup prange.py -c 5 -m 7 -t 9 &
 
-b) Stern’s algorithm
+	b) Stern’s algorithm
 
 		./stern.py -c 35 -m 7 -t 9 -p 1 -l 2
 
 	Note: The flag -p concerns the error bits in each k/2 coordinates.
 	Note: The flag -c indicates how many times will be repeated the algorithm.
 
-c) Ball-collision-Decoding algorithm
+	c) Ball-collision-Decoding algorithm
 
 		./ball-coll.py -c 35 -m 7 -t 9 -p1 2 -p2 1 -q1 -1 -q2 -1 -l 2
 
