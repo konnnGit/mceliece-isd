@@ -70,3 +70,75 @@ n,k,t=27,2,5
 distance between c[0] and c[1] is 12
 error is [0  0  0  0  1  1  0  0  0  0  0  1  0  0  0  1  0  0  0  0  0  0  0  0  0  0 
  1]
+
+2022-08-04 16:23:30.926549
+n,k,t=16,10,3
+distance between cwords[0] and cwords[1] is 10
+error is [0  1  0  1  0  0  0  0  0  0  0  1  0  0  0  0]
+
+2022-08-04 16:31:23.158059
+n,k,t=32,17,3
+distance between cwords[0] and cwords[1] is 15
+error is [0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0 
+ 1  0  0  1  0  0]
+
+2022-08-04 16:38:43.279271
+n,k,t=32,17,3
+distance between cwords[0] and cwords[1] is 15
+error is [0  0  0  0  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 
+ 0  0  0  1  0  0]
+
+2022-08-04 17:51:53.830381
+n,k,t=32,17,3
+distance between cwords[0] and cwords[1] is 15
+error is [0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  1  0  0  0  0  0  0  1]
+
+2022-08-04 17:58:07.999748
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0]
+
+2022-08-04 18:27:39.213935
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  0  1  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+
+2022-08-04 18:29:22.537192
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0  0  0  0  0  0  0]
+
+2022-08-04 18:30:17.298068
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0  0]
+
+2022-08-04 18:39:00.369115
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  1  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0]
+
+2022-08-04 18:51:20.450858
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 21
+error is [0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  1  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0]
+
+2022-08-04 18:54:40.944916
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 21
+error is [0  0  0  0  1  0  0  0  0  0  0  1  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0]
+
+2022-08-04 19:15:39.444521
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0]
+
+2022-08-05 10:33:14.807357
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1]
+
+2022-08-05 11:03:16.592145
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 17
+error is [0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  1  0]

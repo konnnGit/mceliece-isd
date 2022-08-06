@@ -10,6 +10,7 @@ def encode(text, parity):
     h=readFromFile(parity)
     H=sympy.Matrix(h)
     k_val=H.shape[1]-H.shape[0]
+    print("k is ", k_val)
     output = []
     current = sympy.Matrix()
     for c in text:
@@ -24,13 +25,13 @@ def encode(text, parity):
                 if current.shape[1] == 0:
                     current = sympy.Matrix([1])
                 else:
-                    current = current.col_insert(current.shape[1], 
+                    current = current.col_insert(current.shape[1],
                     							 sympy.Matrix([1]))
             else:
                 if current.shape[1] == 0:
                     current = sympy.Matrix([0])
                 else:
-                    current = current.col_insert(current.shape[1], 
+                    current = current.col_insert(current.shape[1],
                     							 sympy.Matrix([0]))
     nonempty = current.shape[1]
     final = sympy.Matrix([1] * nonempty).T
@@ -48,7 +49,7 @@ def encode(text, parity):
     output.append(final)
     if args.v:
         print('The encoded text is:')
-        for o in output:            
+        for o in output:
             sympy.pprint(o)
     if args.o:
         with gzip.open(args.o, 'wb') as f:
@@ -56,12 +57,13 @@ def encode(text, parity):
 def decode(filename):
     with gzip.open(filename, 'rb') as f:
         input = pickle.loads(f.read())
+    #sympy.pprint(input)
     pad = input[-1]
     used_bits = (pad * sympy.Matrix([1] * pad.shape[1]))[0]
     input = input[0:-1]
     for i in range(pad.shape[1] - used_bits):
         input[-1].col_del(input[-1].shape[1] - 1)
-    bit_count = 6
+    bit_count =6
     ascii_val = 0
     output = ''
     for m in input:

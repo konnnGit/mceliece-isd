@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+    #!/usr/bin/python3
 import argparse
 import sympy
 import gzip
@@ -12,15 +12,12 @@ from ISD_Utilities import *
 #from McElieceUtil import *
 
 def prange(c, H, t):
-    
-    
     rawH=myReadFromFile(H)
     n=rawH.shape[1]
     k= rawH.shape[1]  - rawH.shape[0]  
-    cword=myReadFromFile(c)
-
-    
-    
+    cword_all=myReadFromFile(c)
+    #Attempt to work with the first part of the message, which is the first codeword.
+    cword=cword_all[0,:]
     syndr=(cword*rawH.T).applyfunc(lambda x: mod(x,2))
     alg=1
     attempts=0

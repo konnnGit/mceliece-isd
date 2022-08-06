@@ -58,3 +58,19 @@ Ball coll OK,7,6,128,86,43,2,1,0,0,1,9568,0.0204
 2022-06-28 10:52:41.174726
 Ball coll OK,7,6,128,86,43,2,1,0,0,1,4067,0.0357
 Ball coll OK,7,6,128,86,43,2,1,0,0,1,8905,0.0256
+2022-08-05 18:08:45.888695
+An exception of type ValueError occurred. Arguments:
+('factorial() not defined for negative values',)
+2022-08-05 18:09:28.236092
+Ball coll OK,5,3,32,17,8,1,1,0,0,1,31,0.0227
+2022-08-05 18:13:26.331580
+An exception of type ValueError occurred. Arguments:
+('factorial() not defined for negative values',)
+2022-08-05 18:16:25.275486
+An exception of type ValueError occurred. Arguments:
+('factorial() not defined for negative values',)
+2022-08-05 18:16:41.738646
+An exception of type ValueError occurred. Arguments:
+('factorial() not defined for negative values',)
+2022-08-05 18:16:59.327278
+Ball coll OK,5,3,32,17,8,1,1,0,0,1,6,0.1

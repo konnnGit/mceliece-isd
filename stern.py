@@ -14,18 +14,17 @@ from ISD_Utilities import *
 
 
 
-def stern(c,H,t,p,l):  
-    
+def stern(c,H,t,p,l):
     rawH=myReadFromFile(H) 
     n=rawH.shape[1] 
     k= rawH.shape[1]  - rawH.shape[0] 
+    
     if 2*p >t or 2*p>k or p==0:
         print('wrong p distribution or number, exiting..')
         exit()
 
-    cword=myReadFromFile(c) 
-    
-     
+    cword_all=myReadFromFile(c) 
+    cword=cword_all[0,:]
     syndr=(cword*rawH.T).applyfunc(lambda x: mod(x,2))
     attempts=0
     attemptsQ=0

@@ -10,7 +10,6 @@ from ISD_Utilities import *
 #from McElieceUtil import *
 
 def ballcoll(c,H,t,p1,p2,q1,q2,l):
-    
     rawH=myReadFromFile(H) 
     n=rawH.shape[1]
     k= rawH.shape[1]  - rawH.shape[0]
@@ -19,8 +18,8 @@ def ballcoll(c,H,t,p1,p2,q1,q2,l):
     if p1+p2+q1+q2 >t or q1+q2>l or p1+p2>k  :
         print('wrong p,q distribution, exiting...')
         exit()
-    cword=myReadFromFile(c)  
-     
+    cword_all=myReadFromFile(c)  
+    cword=cword_all[0,:]
     syndr=(cword*rawH.T).applyfunc(lambda x: mod(x,2))
     attempts=0
     attemptsQ=0
@@ -141,10 +140,10 @@ def ballcoll(c,H,t,p1,p2,q1,q2,l):
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", type=int,	help="Times to repeat the alg")
 parser.add_argument("-l", type=int,	help="size of dimension l(stern)")
-parser.add_argument("-p1", type=int,	help="num of errors in k1")
-parser.add_argument("-p2", type=int,	help="num of errors in k2")
-parser.add_argument("-q1", type=int,	help="num of errors in l1")
-parser.add_argument("-q2", type=int,	help="num of errors in l2")
+parser.add_argument("-p1", type=int,	help="num of errors in k1. At least equals to one.")
+parser.add_argument("-p2", type=int,	help="num of errors in k2. At least equals to one.")
+parser.add_argument("-q1", type=int,	help="num of errors in l1. <zero if need to declare as zero")
+parser.add_argument("-q2", type=int,	help="num of errors in l2. <zero if need to declare as zero")
 parser.add_argument("-t", type=str, help="num of errors")
 parser.add_argument("-m", type=str, help="m in GF")
 args = parser.parse_args()
@@ -158,6 +157,8 @@ if args.m and args.t and args.l and args.c and args.p1 and args.p2 and args.q1 a
         q2=0
     else:
         q2=args.q2
+        
+    
     
     path='stats/'
     logs='ball-coll.csv' 
