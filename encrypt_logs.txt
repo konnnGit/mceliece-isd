@@ -142,3 +142,16 @@ error is [0  0  0  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0
 n,k,t=32,17,3
 distance between cwordsWE[0] and cwordsWE[1] is 17
 error is [0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  1  0]
+
+2022-08-09 12:33:56.713353
+n,k,t=32,17,3
+distance between cwordsWE[0] and cwordsWE[1] is 15
+error is [0  0  0  0  0  1  0  0  0  0  0  0  1  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0
+]
+
+2022-08-09 12:42:14.074864
+n,k,t=64,40,4
+distance between cwordsWE[0] and cwordsWE[1] is 33
+error is [0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0 
+ 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+ 0  0  0  1  0  0  1  0  0  0  0  0]

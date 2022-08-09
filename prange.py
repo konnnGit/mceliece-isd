@@ -1,4 +1,4 @@
-    #!/usr/bin/python3
+#!/usr/bin/python3
 import argparse
 import sympy
 import gzip
@@ -16,8 +16,10 @@ def prange(c, H, t):
     n=rawH.shape[1]
     k= rawH.shape[1]  - rawH.shape[0]  
     cword_all=myReadFromFile(c)
+    sympy.pprint(cword_all)
     #Attempt to work with the first part of the message, which is the first codeword.
     cword=cword_all[0,:]
+    sympy.pprint(cword)
     syndr=(cword*rawH.T).applyfunc(lambda x: mod(x,2))
     alg=1
     attempts=0
@@ -72,6 +74,7 @@ parser.add_argument("-m", type=str, help="m in GF")
 args = parser.parse_args()
 
 if args.m and args.t  and args.c:
+    print ("init alg. ...")
     path='stats/'
     logs='prange.csv'   
     logPath=os.path.join(path,logs) 
